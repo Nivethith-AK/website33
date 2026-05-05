@@ -17,8 +17,8 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-2xl">
-            <Reveal delay={0.4} width="130%">
-              <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Orchestrating <br />Excellence</h2>
+            <Reveal delay={0.4} width="100%">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif italic leading-tight">Orchestrating <br />Excellence</h2>
             </Reveal>
           </div>
           <Reveal delay={0.6}>

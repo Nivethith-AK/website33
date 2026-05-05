@@ -41,7 +41,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl border border-[var(--border-primary)]">
         <div className="md:w-5/12 bg-[var(--text-primary)] text-[var(--bg-primary)] p-12 md:p-20 flex flex-col justify-between transition-colors duration-500">
           <div className="relative z-10">
-            <Reveal width="130%">
+            <Reveal width="100%">
               <h2 className="text-4xl md:text-6xl font-serif mb-10 italic leading-tight">Begin Your <br />Journey</h2>
             </Reveal>
             <p className="opacity-60 font-light mb-16 leading-relaxed text-lg">

@@ -119,8 +119,8 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease }}
           >
-            <Reveal width="130%">
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[0.9] tracking-tight pr-8">
+            <Reveal width="100%">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[1.1] md:leading-[0.9] tracking-tight pr-8">
                 Connect with <br />
                 <span className="text-gold-gradient">Visionaries</span>
               </h2>
@@ -188,7 +188,7 @@ function Home() {
         {/* Features Section */}
         <section className="mb-32">
           <div className="mb-12">
-            <Reveal width="130%">
+            <Reveal width="100%">
               <h3 className="mt-4 text-4xl md:text-5xl font-serif italic tracking-tight">Orchestrating Excellence</h3>
             </Reveal>
           </div>
@@ -221,7 +221,7 @@ function Home() {
             viewport={{ once: true }}
             className="rounded-[2.5rem] border border-[var(--border-primary)] glass p-8 md:p-10"
           >
-            <Reveal width="130%">
+            <Reveal width="100%">
               <h3 className="mt-4 text-4xl font-serif mb-8">The Ecosystem Workflow</h3>
             </Reveal>
             <div className="space-y-4">
@@ -242,7 +242,7 @@ function Home() {
             viewport={{ once: true }}
             className="rounded-[2.5rem] border border-[var(--border-primary)] glass p-8 md:p-10"
           >
-            <Reveal width="130%">
+            <Reveal width="100%">
               <h3 className="mt-4 text-4xl font-serif mb-8">Navigate the Hub</h3>
             </Reveal>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -266,7 +266,7 @@ function Home() {
         {/* Roles Section */}
         <section className="mb-32">
           <div className="mb-12">
-            <Reveal width="130%">
+            <Reveal width="100%">
               <h3 className="mt-4 text-4xl md:text-5xl font-serif italic tracking-tight">Tailored for Every Connection</h3>
             </Reveal>
           </div>
@@ -293,7 +293,7 @@ function Home() {
 
         {/* Call to Action */}
         <section className="rounded-[3rem] border border-luxury-accent/20 bg-gradient-to-br from-luxury-accent/10 via-transparent to-luxury-accent/5 p-10 md:p-16 text-center flex flex-col items-center justify-center">
-          <Reveal width="130%" className="flex flex-col items-center justify-center">
+          <Reveal width="100%" className="flex flex-col items-center justify-center">
             <h3 className="text-4xl md:text-6xl font-serif italic mb-10 max-w-4xl mx-auto text-center">Elevating the standards of creative collaboration</h3>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full">
               <Link to="/contact">

@@ -18,7 +18,7 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div>
-            <Reveal delay={0.4} width="130%">
+            <Reveal delay={0.4} width="100%">
               <h2 className="text-4xl md:text-6xl font-serif italic">Masterpieces</h2>
             </Reveal>
           </div>

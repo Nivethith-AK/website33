@@ -21,8 +21,8 @@ export default function Stats() {
             >
               <div className="absolute inset-0 bg-luxury-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-3xl -z-10 rounded-full"></div>
               <div className="flex justify-center w-full">
-                <Reveal delay={i * 0.1} width="130%" className="mx-auto">
-                  <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif mb-6 py-6 px-4 leading-tight text-gold-gradient transition-transform duration-700 tracking-normal text-center">
+                <Reveal delay={i * 0.1} width="100%" className="mx-auto">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-6 py-6 px-4 leading-tight text-gold-gradient transition-transform duration-700 tracking-normal text-center">
                     {stat.value}
                   </h3>
                 </Reveal>
@@ -34,7 +34,7 @@ export default function Stats() {
                 viewport={{ once: true }}
                 className="flex justify-center"
               >
-                <Reveal width="130%" className="mx-auto">
+                <Reveal width="100%" className="mx-auto">
                   <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--text-primary)] opacity-50 font-bold group-hover:opacity-100 transition-all duration-500 max-w-[200px] text-center leading-relaxed">
                     {stat.label}
                   </p>
