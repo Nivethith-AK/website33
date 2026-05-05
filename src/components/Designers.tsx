@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Designer } from '../types';
 import AnimatedSection from './AnimatedSection';
 import { Reveal } from './ui/Reveal';
+import { Card } from './ui/Card';
 
 const DESIGNERS: Designer[] = [
   {
@@ -39,10 +40,7 @@ export default function Designers() {
     <AnimatedSection id="designers" className="py-32 bg-[var(--bg-primary)] px-6 scroll-mt-32">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <Reveal>
-            <span className="text-luxury-accent uppercase tracking-[0.4em] text-[10px] font-mono font-bold mb-4 block">Our Talent</span>
-          </Reveal>
-          <Reveal delay={0.4}>
+          <Reveal delay={0.4} width="130%">
             <h2 className="text-4xl md:text-6xl font-serif md:leading-tight">Exceptional <br />Designers</h2>
           </Reveal>
         </div>
@@ -68,8 +66,7 @@ export default function Designers() {
                   <span className="text-[var(--text-primary)] text-[10px] font-mono font-bold tracking-[0.3em] uppercase translate-y-4 group-hover:translate-y-0 transition-transform">View Portfolio</span>
                 </div>
               </div>
-              <h3 className="text-xl font-serif mb-2">{designer.name}</h3>
-              <p className="text-luxury-accent text-[10px] font-mono uppercase tracking-[0.3em] mb-4 font-bold">{designer.specialization}</p>
+              <h3 className="text-xl font-serif mb-4">{designer.name}</h3>
               <p className="text-[var(--text-primary)] opacity-40 text-sm font-light leading-relaxed mb-6 line-clamp-3 group-hover:opacity-100 transition-opacity duration-700">
                 {designer.bio}
               </p>

@@ -4,7 +4,6 @@
  */
 
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import Designers from './components/Designers';
 import HowItWorks from './components/HowItWorks';
 import Portfolio from './components/Portfolio';
@@ -18,13 +17,296 @@ import AboutUs from './components/AboutUs';
 import PageTransition from './components/PageTransition';
 import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { ChevronUp } from 'lucide-react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { ChevronUp, type LucideIcon } from 'lucide-react';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
+import { Button } from './components/ui/Button';
+import { Reveal } from './components/ui/Reveal';
+
+import {
+  ArrowRight,
+  Building2,
+  CircleUserRound,
+  Globe2,
+  MessageSquare,
+  Rocket,
+  ShieldCheck,
+  Sparkles,
+  UserRound,
+} from "lucide-react";
+
+type FeatureCard = {
+  icon: LucideIcon;
+  title: string;
+  text: string;
+};
+
+type RouteCard = {
+  href: string;
+  label: string;
+  text: string;
+};
+
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const featureCards: FeatureCard[] = [
+  {
+    icon: ShieldCheck,
+    title: "Curated Excellence",
+    text: "Vetted designer pool ensuring only high-caliber creative talent enters the ecosystem.",
+  },
+  {
+    icon: Globe2,
+    title: "Global Network",
+    text: "Bridging the gap between international fashion houses and visionary creators worldwide.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Fluid Synergy",
+    text: "Direct communication channels between brands and talent for seamless creative alignment.",
+  },
+  {
+    icon: Sparkles,
+    title: "Aesthetic Integrity",
+    text: "Focusing on avant-garde and luxury segments to maintain a premium standard of design.",
+  },
+];
+
+const routeCards: RouteCard[] = [
+  { href: "/", label: "Home", text: "Entry point to the ecosystem" },
+  { href: "/designers", label: "Designers", text: "Browse our exclusive roster" },
+  { href: "/how-it-works", label: "How it Works", text: "The collaborative process" },
+  { href: "/portfolio", label: "Portfolio", text: "Showcase of masterworks" },
+  { href: "/contact", label: "Contact", text: "Partner with our agency" },
+  { href: "/about", label: "About Us", text: "Our mission and heritage" },
+];
+
+const roleCards = [
+  {
+    icon: UserRound,
+    title: "Designers",
+    text: "Visionary creators looking to connect with prestigious global fashion houses.",
+  },
+  {
+    icon: Building2,
+    title: "Fashion Houses",
+    text: "Elite enterprises seeking to discover and collaborate with top-tier talent.",
+  },
+  {
+    icon: CircleUserRound,
+    title: "Curators",
+    text: "Our internal team managing the selection and matching process for excellence.",
+  },
+];
+
+const workflow = [
+  "Initial discovery and vision submission from brands or talent.",
+  "Meticulous curation and matching by our expert agency team.",
+  "Collaborative atelier phase with direct creative dialogue.",
+  "Final delivery of technical documentation and source files.",
+];
 
 function Home() {
   return (
-    <PageTransition>
-      <Hero />
+    <PageTransition className="relative bg-theweb overflow-hidden">
+      <div className="theweb-bg-pattern" />
+      <div className="theweb-grid-pattern" />
+      
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-24">
+        {/* Hero Section */}
+        <section className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] items-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease }}
+          >
+            <Reveal width="130%">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[0.9] tracking-tight pr-8">
+                Connect with <br />
+                <span className="text-gold-gradient">Visionaries</span>
+              </h2>
+            </Reveal>
+
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed opacity-70">
+              AVNTAE is an exclusive ecosystem facilitating connections between global fashion houses and high-caliber creative minds. We curate excellence for the runway.
+            </p>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Link to="/designers">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Explore Roster <ArrowRight size={14} className="ml-3" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                  Partner with Us
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.1, ease }}
+            className="glass rounded-[2.5rem] p-8 border border-[var(--border-primary)] shadow-2xl relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-luxury-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center justify-between border-b border-[var(--border-primary)] pb-6 mb-8">
+                <div>
+                  <p className="text-2xl font-serif">Global & Active</p>
+                </div>
+                <div className="rounded-full border border-luxury-accent/30 bg-luxury-accent/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-luxury-accent">
+                  Live
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: "Elite Talent", value: "500+" },
+                  { label: "Partner Houses", value: "120+" },
+                  { label: "Masterworks", value: "2.5k" },
+                  { label: "Success Rate", value: "100%" },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/40 p-5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">{stat.label}</p>
+                    <p className="mt-2 text-xl md:text-2xl font-serif text-gold-gradient">{stat.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-2xl bg-luxury-accent/5 border border-luxury-accent/10 p-6">
+                <p className="text-xs leading-relaxed opacity-60 italic">
+                  "Design is the silent ambassador of your brand." — Discover the synergy that defines the modern runway.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Features Section */}
+        <section className="mb-32">
+          <div className="mb-12">
+            <Reveal width="130%">
+              <h3 className="mt-4 text-4xl md:text-5xl font-serif italic tracking-tight">Orchestrating Excellence</h3>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {featureCards.map((card, index) => (
+              <motion.article
+                key={card.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.1 }}
+                className="rounded-[2rem] border border-[var(--border-primary)] glass p-8 transition-all duration-500 hover:-translate-y-2 hover:border-luxury-accent/30 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-luxury-accent/5 flex items-center justify-center text-luxury-accent mb-8 group-hover:bg-luxury-accent group-hover:text-[var(--bg-primary)] transition-all">
+                  <card.icon className="h-6 w-6" />
+                </div>
+                <h4 className="text-xl font-serif mb-4">{card.title}</h4>
+                <p className="text-sm leading-relaxed opacity-50">{card.text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        {/* Workflow & Route Map */}
+        <section className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-[2.5rem] border border-[var(--border-primary)] glass p-8 md:p-10"
+          >
+            <Reveal width="130%">
+              <h3 className="mt-4 text-4xl font-serif mb-8">The Ecosystem Workflow</h3>
+            </Reveal>
+            <div className="space-y-4">
+              {workflow.map((step, index) => (
+                <div key={step} className="flex gap-6 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/40 p-6 items-start group hover:border-luxury-accent/20 transition-all">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-luxury-accent text-[10px] font-bold text-[var(--bg-primary)]">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <p className="text-sm leading-relaxed opacity-60 group-hover:opacity-100 transition-opacity pt-2">{step}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="rounded-[2.5rem] border border-[var(--border-primary)] glass p-8 md:p-10"
+          >
+            <Reveal width="130%">
+              <h3 className="mt-4 text-4xl font-serif mb-8">Navigate the Hub</h3>
+            </Reveal>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {routeCards.map((route) => (
+                <Link
+                  key={route.href}
+                  to={route.href}
+                  className="group rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/40 p-6 transition-all hover:border-luxury-accent/30 hover:bg-luxury-accent/5"
+                >
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-luxury-accent">{route.label}</p>
+                    <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </div>
+                  <p className="text-xs leading-relaxed opacity-40 group-hover:opacity-70 transition-opacity">{route.text}</p>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Roles Section */}
+        <section className="mb-32">
+          <div className="mb-12">
+            <Reveal width="130%">
+              <h3 className="mt-4 text-4xl md:text-5xl font-serif italic tracking-tight">Tailored for Every Connection</h3>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {roleCards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.1 }}
+                className="rounded-[2rem] border border-[var(--border-primary)] glass p-10 text-center"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-luxury-accent/5 flex items-center justify-center text-luxury-accent mx-auto mb-8">
+                  <card.icon className="h-8 w-8" />
+                </div>
+                <h4 className="text-2xl font-serif mb-4">{card.title}</h4>
+                <p className="text-sm leading-relaxed opacity-50">{card.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="rounded-[3rem] border border-luxury-accent/20 bg-gradient-to-br from-luxury-accent/10 via-transparent to-luxury-accent/5 p-10 md:p-16 text-center flex flex-col items-center justify-center">
+          <Reveal width="130%" className="flex flex-col items-center justify-center">
+            <h3 className="text-4xl md:text-6xl font-serif italic mb-10 max-w-4xl mx-auto text-center">Elevating the standards of creative collaboration</h3>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full">
+              <Link to="/contact">
+                <Button size="lg">Begin Your Journey</Button>
+              </Link>
+              <Link to="/portfolio">
+                <Button variant="outline" size="lg">Discover Masterpieces</Button>
+              </Link>
+            </div>
+          </Reveal>
+        </section>
+      </div>
+      
       <Brands />
       <Stats />
     </PageTransition>
@@ -91,7 +373,7 @@ export default function App() {
   const { scrollYProgress, scrollY } = useScroll();
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState<'dark' | 'light'>('light');
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const location = useLocation();
 
   const toggleTheme = () => {
@@ -127,8 +409,6 @@ export default function App() {
       setShowBackToTop(latest > 500);
     });
   }, [scrollY]);
-
-  // Scroll logic moved to PageTransition to wait for animations
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -228,4 +508,3 @@ export default function App() {
     </div>
   );
 }
-

@@ -21,24 +21,21 @@ export default function Footer() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 text-center md:text-left">
           <div className="space-y-6">
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.4em] text-luxury-accent font-bold">Platform</h4>
-            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light">
+            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light pt-8">
               <li><Link to="/designers" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Find Designers</Link></li>
               <li><Link to="/how-it-works" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">How it Works</Link></li>
               <li><Link to="/portfolio" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Portfolios</Link></li>
             </ul>
           </div>
           <div className="space-y-6">
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.4em] text-luxury-accent font-bold">Company</h4>
-            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light">
+            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light pt-8">
               <li><Link to="/about" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">About Us</Link></li>
               <li><Link to="/" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Creative Hub</Link></li>
               <li><Link to="/contact" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Contact</Link></li>
             </ul>
           </div>
           <div className="space-y-6 col-span-2 md:col-span-1">
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.4em] text-luxury-accent font-bold">Legal</h4>
-            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light">
+            <ul className="space-y-4 text-xs text-[var(--text-primary)] opacity-50 font-light pt-8">
               <li><Link to="/privacy" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-luxury-accent transition-colors hover:translate-x-1 inline-block transform">Terms of Service</Link></li>
             </ul>

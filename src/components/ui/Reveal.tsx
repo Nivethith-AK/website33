@@ -3,11 +3,12 @@ import { useEffect, useRef, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  width?: "fit-content" | "100%";
+  width?: "fit-content" | "100%" | "130%" | string;
   delay?: number;
+  className?: string;
 }
 
-export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props) => {
+export const Reveal = ({ children, width = "fit-content", delay = 0.25, className = "" }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -20,10 +21,10 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props)
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} className="relative overflow-hidden" style={{ width }}>
+    <div ref={ref} className={`relative ${className}`} style={{ width }}>
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: "100%" },
+          hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"

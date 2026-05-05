@@ -7,7 +7,7 @@ const BRANDS = [
 
 export default function Brands() {
   return (
-    <AnimatedSection className="py-24 bg-[var(--bg-primary)] overflow-hidden border-y border-[var(--border-primary)] relative">
+    <AnimatedSection className="py-24 bg-transparent overflow-hidden border-y border-[var(--border-primary)] relative">
       <div className="absolute left-0 top-0 w-48 md:w-80 h-full bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10 pointer-events-none"></div>
       <div className="absolute right-0 top-0 w-48 md:w-80 h-full bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10 pointer-events-none"></div>
       

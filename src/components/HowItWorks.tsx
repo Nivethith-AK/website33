@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Sparkles, MessageSquare, Briefcase, CheckCircle } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { Reveal } from './ui/Reveal';
+import { Card } from './ui/Card';
 
 const STEPS = [
   { id: 1, title: 'Vision Submission', description: 'Enter our ecosystem by sharing your creative requirements and project scope.', icon: MessageSquare },
@@ -16,10 +17,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-2xl">
-            <Reveal>
-              <span className="text-luxury-accent uppercase tracking-[0.5em] text-[10px] font-mono font-bold mb-6 block">The Ecosystem</span>
-            </Reveal>
-            <Reveal delay={0.4}>
+            <Reveal delay={0.4} width="130%">
               <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Orchestrating <br />Excellence</h2>
             </Reveal>
           </div>
@@ -38,24 +36,25 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.15 }}
-              className="relative p-10 rounded-[2rem] glass border border-[var(--border-primary)] hover:border-luxury-accent/30 transition-all duration-700 group overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                <step.icon size={120} strokeWidth={0.5} />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-luxury-accent/5 rounded-2xl flex items-center justify-center mb-10 text-luxury-accent group-hover:bg-luxury-accent group-hover:text-[var(--bg-primary)] transition-all duration-500">
-                  <step.icon size={24} />
+              <Card className="relative h-full">
+                <div className="p-10 relative z-10">
+                  <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <step.icon size={120} strokeWidth={0.5} />
+                  </div>
+                  
+                  <div className="w-14 h-14 bg-luxury-accent/5 rounded-2xl flex items-center justify-center mb-10 text-luxury-accent group-hover:bg-luxury-accent group-hover:text-[var(--bg-primary)] transition-all duration-500">
+                    <step.icon size={24} />
+                  </div>
+                  <h3 className="text-2xl font-serif mb-4 flex items-center gap-4 group-hover:translate-x-2 transition-transform duration-700">
+                    <span className="text-[10px] font-mono font-bold text-luxury-accent/60 bg-luxury-accent/5 w-8 h-8 rounded-full flex items-center justify-center -ml-2">{String(step.id).padStart(2, '0')}</span>
+                    {step.title}
+                  </h3>
+                  <p className="text-[var(--text-primary)] opacity-40 text-sm font-light leading-relaxed group-hover:opacity-70 transition-opacity duration-700">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-serif mb-4 flex items-center gap-4 group-hover:translate-x-2 transition-transform duration-700">
-                   <span className="text-[10px] font-mono font-bold text-luxury-accent/60 bg-luxury-accent/5 w-8 h-8 rounded-full flex items-center justify-center -ml-2">{String(step.id).padStart(2, '0')}</span>
-                   {step.title}
-                </h3>
-                <p className="text-[var(--text-primary)] opacity-40 text-sm font-light leading-relaxed group-hover:opacity-70 transition-opacity duration-700">
-                  {step.description}
-                </p>
-              </div>
+              </Card>
             </motion.div>
           ))}
         </div>

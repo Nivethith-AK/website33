@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle, Mail, MapPin } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
+import { Reveal } from './ui/Reveal';
+import { Input, Textarea, Label } from './ui/Input';
+import { Button } from './ui/Button';
 
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -38,8 +41,9 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl border border-[var(--border-primary)]">
         <div className="md:w-5/12 bg-[var(--text-primary)] text-[var(--bg-primary)] p-12 md:p-20 flex flex-col justify-between transition-colors duration-500">
           <div className="relative z-10">
-            <span className="text-[10px] uppercase tracking-[0.4em] opacity-40 font-bold mb-6 block">Get in Touch</span>
-            <h2 className="text-4xl md:text-6xl font-serif mb-10 italic leading-tight">Begin Your <br />Journey</h2>
+            <Reveal width="130%">
+              <h2 className="text-4xl md:text-6xl font-serif mb-10 italic leading-tight">Begin Your <br />Journey</h2>
+            </Reveal>
             <p className="opacity-60 font-light mb-16 leading-relaxed text-lg">
               Whether you are looking to hire a visionary or showcase your craft, our concierge team is here to assist.
             </p>
@@ -86,12 +90,11 @@ export default function Contact() {
                     Connecting your vision with excellence. Our team will review your submission and reach out within 24 hours.
                   </p>
                 </div>
-                <button 
+                <Button 
                   onClick={() => setFormState('idle')}
-                  className="px-10 py-4 bg-luxury-accent text-[var(--bg-primary)] rounded-full text-[10px] uppercase tracking-[0.3em] font-bold hover:scale-105 transition-transform"
                 >
                   Send Another Inquiry
-                </button>
+                </Button>
               </motion.div>
             ) : (
               <motion.form 
@@ -103,46 +106,43 @@ export default function Contact() {
                 exit={{ opacity: 0 }}
               >
                 <div className="space-y-4 group">
-                  <label className="text-[10px] uppercase tracking-[0.4em] text-[var(--text-primary)] opacity-30 font-bold transition-colors group-focus-within:text-luxury-accent">Full Name</label>
-                  <input
+                  <Label>Full Name</Label>
+                  <Input
                     name="name"
                     type="text"
                     autoComplete="name"
                     placeholder="Alexander McQueen"
-                    className={`input-luxury ${errors.name ? 'border-red-500' : 'border-[var(--border-primary)]'} text-lg placeholder:text-[var(--text-primary)] placeholder:opacity-10`}
+                    className={errors.name ? 'border-red-500' : ''}
                   />
                   {errors.name && <p className="text-[10px] text-red-500 tracking-widest">{errors.name}</p>}
                 </div>
 
                 <div className="space-y-4 group">
-                  <label className="text-[10px] uppercase tracking-[0.4em] text-[var(--text-primary)] opacity-30 font-bold transition-colors group-focus-within:text-luxury-accent">Email Address</label>
-                  <input
+                  <Label>Email Address</Label>
+                  <Input
                     name="email"
                     type="email"
                     autoComplete="email"
                     placeholder="name@company.com"
-                    className={`input-luxury ${errors.email ? 'border-red-500' : 'border-[var(--border-primary)]'} text-lg placeholder:text-[var(--text-primary)] placeholder:opacity-10`}
+                    className={errors.email ? 'border-red-500' : ''}
                   />
                   {errors.email && <p className="text-[10px] text-red-500 tracking-widest">{errors.email}</p>}
                 </div>
 
                 <div className="space-y-4 group">
-                  <label className="text-[10px] uppercase tracking-[0.4em] text-[var(--text-primary)] opacity-30 font-bold transition-colors group-focus-within:text-luxury-accent">Inquiry Details</label>
-                  <textarea
+                  <Label>Inquiry Details</Label>
+                  <Textarea
                     name="message"
-                    rows={4}
                     placeholder="Tell us about your next visionary project..."
-                    className={`input-luxury ${errors.message ? 'border-red-500' : 'border-[var(--border-primary)]'} text-lg resize-none placeholder:text-[var(--text-primary)] placeholder:opacity-10`}
-                  ></textarea>
+                    className={errors.message ? 'border-red-500' : ''}
+                  />
                   {errors.message && <p className="text-[10px] text-red-500 tracking-widest">{errors.message}</p>}
                 </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <Button
                   type="submit"
                   disabled={formState === 'submitting'}
-                  className="w-full py-5 bg-luxury-accent text-[var(--bg-primary)] text-[10px] uppercase tracking-[0.4em] font-bold rounded-2xl flex items-center justify-center gap-3 disabled:opacity-50 shadow-luxury-accent/20 shadow-xl transition-all"
+                  className="w-full shadow-luxury-accent/20 shadow-xl"
                 >
                   {formState === 'submitting' ? (
                     <div className="flex items-center gap-2">
@@ -154,9 +154,9 @@ export default function Contact() {
                        <span>Transmitting</span>
                     </div>
                   ) : (
-                    <>Submit Inquiry <Send size={14} /></>
+                    <>Submit Inquiry <Send size={14} className="ml-3" /></>
                   )}
-                </motion.button>
+                </Button>
               </motion.form>
             )}
           </AnimatePresence>

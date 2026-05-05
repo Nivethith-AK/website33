@@ -19,7 +19,7 @@ export default function AboutUs() {
         </motion.div>
 
         <div className="space-y-16">
-          <Reveal width="100%">
+          <Reveal width="130%">
             <div className="glass p-10 md:p-16 rounded-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-luxury-accent/5 rounded-full blur-3xl -z-10 group-hover:bg-luxury-accent/10 transition-colors duration-1000"></div>
               <h2 className="text-3xl font-serif mb-6 text-[var(--text-primary)]">Our Vision</h2>
@@ -32,7 +32,7 @@ export default function AboutUs() {
             </div>
           </Reveal>
 
-          <Reveal width="100%">
+          <Reveal width="130%">
             <div className="glass p-10 md:p-16 rounded-2xl relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-luxury-accent/5 rounded-full blur-3xl -z-10 group-hover:bg-luxury-accent/10 transition-colors duration-1000"></div>
               <h2 className="text-3xl font-serif mb-6 text-[var(--text-primary)]">The Standard of Excellence</h2>
