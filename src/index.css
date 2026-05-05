@@ -126,7 +126,11 @@
 
 /* Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar-track {

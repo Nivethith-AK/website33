@@ -4,11 +4,11 @@ import { Reveal } from './ui/Reveal';
 import { Card } from './ui/Card';
 
 const PORTFOLIO = [
-  { id: 1, title: 'Summer Collection 2024', category: 'Luxury Wear', image: 'https://images.unsplash.com/photo-1539109132314-d4a8c77eeec2?q=80&w=1974&auto=format&fit=crop' },
+  { id: 1, title: 'Summer Collection 2024', category: 'Luxury Wear', image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop' },
   { id: 2, title: 'Urban Tech-Vibe', category: 'Streetwear', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop' },
-  { id: 3, title: 'Eternal Lace', category: 'Bridal', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1976&auto=format&fit=crop' },
-  { id: 4, title: 'Minimalist Structure', category: 'Haute Couture', image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?q=80&w=2070&auto=format&fit=crop' },
-  { id: 5, title: 'Silk Cascades', category: 'Evening Wear', image: 'https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=2059&auto=format&fit=crop' },
+  { id: 3, title: 'Eternal Lace', category: 'Bridal', image: 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=1974&auto=format&fit=crop' },
+  { id: 4, title: 'Minimalist Structure', category: 'Haute Couture', image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2070&auto=format&fit=crop' },
+  { id: 5, title: 'Silk Cascades', category: 'Evening Wear', image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=2016&auto=format&fit=crop' },
   { id: 6, title: 'Architectural Silhouettes', category: 'Avant-Garde', image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop' },
 ];
 
