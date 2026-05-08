@@ -107,10 +107,7 @@ const workflow = [
 
 function Home() {
   return (
-    <PageTransition className="relative bg-theweb overflow-hidden">
-      <div className="theweb-bg-pattern" />
-      <div className="theweb-grid-pattern" />
-      
+    <PageTransition>
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-24">
         {/* Hero Section */}
         <section className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] items-center mb-24">

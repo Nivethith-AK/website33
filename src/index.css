@@ -158,8 +158,12 @@
   backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid var(--glass-border);
 }
+.bg-theweb {
+  background-color: var(--bg-primary);
+}
 
 .theweb-bg-pattern {
+
   position: absolute;
   inset: 0;
   z-index: -10;

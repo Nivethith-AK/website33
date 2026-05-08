@@ -37,7 +37,7 @@ const DESIGNERS: Designer[] = [
 
 export default function Designers() {
   return (
-    <AnimatedSection id="designers" className="py-32 bg-[var(--bg-primary)] px-6 scroll-mt-32">
+    <AnimatedSection id="designers" className="py-32 bg-transparent px-6 scroll-mt-32">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <Reveal delay={0.4} width="100%">

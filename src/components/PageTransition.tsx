@@ -11,9 +11,13 @@ export default function PageTransition({ children, className = "" }: { children:
       animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+      className={`relative min-h-screen bg-[var(--bg-primary)] overflow-hidden ${className}`}
     >
-      {children}
+      <div className="theweb-bg-pattern" />
+      <div className="theweb-grid-pattern" />
+      <div className="relative z-10">
+        {children}
+      </div>
     </motion.div>
   );
 }

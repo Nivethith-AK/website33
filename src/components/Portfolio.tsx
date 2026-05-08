@@ -14,7 +14,7 @@ const PORTFOLIO = [
 
 export default function Portfolio() {
   return (
-    <AnimatedSection id="portfolio" className="py-32 bg-[var(--bg-primary)] scroll-mt-32">
+    <AnimatedSection id="portfolio" className="py-32 bg-transparent scroll-mt-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div>
