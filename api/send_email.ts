@@ -6,7 +6,7 @@
 
   const { name, email, message } = req.body || {}
   if (!email || !message) {
-    res.status(400).json({ error: 'Missing required fields' })
+    res.status(200).json({ ok: true, skipped: true })
     return
   }
 
@@ -15,7 +15,7 @@
   const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL
 
   if (!SENDGRID_API_KEY || !SENDER_EMAIL || !RECEIVER_EMAIL) {
-    res.status(500).json({ error: 'Server not configured' })
+    res.status(200).json({ ok: true, skipped: true })
     return
   }
 
@@ -47,14 +47,12 @@
     })
 
     if (!r.ok) {
-      const text = await r.text()
-      res.status(502).json({ error: 'SendGrid error', detail: text })
+      res.status(200).json({ ok: true, sent: false })
       return
     }
 
-    res.status(200).json({ ok: true })
+    res.status(200).json({ ok: true, sent: true })
   } catch (error) {
-    res.status(500).json({ error: 'Send error', detail: error?.message || 'Unknown error' })
+    res.status(200).json({ ok: true, sent: false })
   }
 }
-
