@@ -7,7 +7,7 @@ import { Designer, DesignerCategory } from '../types';
 import { useDesigners } from '../context/DesignersContext';
 import { Avatar, Badge, Button, Checkbox, Dialog, ImageCropper, Input, Select, Tooltip } from './ui';
 import LoginCard from './LoginCard';
-import { supabase } from '../lib/supabaseClient';
+import { supabase, supabasePublishableKey, supabaseUrl } from '../lib/supabaseClient';
 
 const PROFILE_PICTURES_BUCKET = 'portraits';
 const ADMIN_SETTINGS_KEY = 'avntae:admin-settings';
@@ -256,9 +256,51 @@ export default function AdminDashboard() {
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
-            if (error) throw error;
+            const { error, data } = await supabase.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                throw error;
+            }
+
+            if (data?.session) {
+                setSession(data.session);
+                return;
+            }
         } catch (error) {
+            try {
+                const key = supabasePublishableKey || 'sb_publishable_rHWLfLFjs-7knqrlchi2eg_xJtdl5Yp';
+                const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        apikey: key,
+                        Authorization: `Bearer ${key}`,
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                if (!response.ok) {
+                    throw error;
+                }
+
+                const authResult = await response.json();
+                const sessionPayload = authResult?.access_token
+                    ? {
+                          access_token: authResult.access_token,
+                          refresh_token: authResult.refresh_token,
+                      }
+                    : null;
+
+                if (sessionPayload) {
+                    await supabase.auth.setSession(sessionPayload as any);
+                    setSession(authResult);
+                    return;
+                }
+            } catch (fallbackError) {
+                pushNotice('error', 'Login failed', (fallbackError as any).message || (error as any).message || 'Check your credentials and try again.');
+                return;
+            }
+
             pushNotice('error', 'Login failed', (error as any).message || 'Check your credentials and try again.');
         }
     };
