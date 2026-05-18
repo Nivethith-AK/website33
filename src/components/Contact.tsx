@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle, Mail, MapPin } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { Reveal, Input, Textarea, Label, Button } from './ui';
-import { supabase, supabaseUrl, supabaseAnonKey } from '../lib/supabaseClient';
+import { supabaseUrl } from '../lib/supabaseClient';
 import { useLocation } from 'react-router-dom';
 
 export default function Contact() {
@@ -53,8 +53,8 @@ export default function Contact() {
     setSubmitError('');
 
     try {
-      if (!supabaseUrl || !supabaseAnonKey) {
-        throw new Error('Supabase configuration missing. Check VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env');
+      if (!supabaseUrl) {
+        throw new Error('Supabase configuration missing. Check VITE_SUPABASE_URL in your .env');
       }
 
       // Construct the Edge Function URL
@@ -70,7 +70,6 @@ export default function Contact() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseAnonKey}`,
         },
         body: JSON.stringify({ name, email, message }),
         signal: controller.signal,
