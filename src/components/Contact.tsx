@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle, Mail, MapPin } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { Reveal, Input, Textarea, Label, Button } from './ui';
-import { supabase } from '../lib/supabaseClient';
+import { supabase, supabaseUrl, supabaseAnonKey } from '../lib/supabaseClient';
 import { useLocation } from 'react-router-dom';
 
 export default function Contact() {
@@ -53,17 +53,20 @@ export default function Contact() {
     setSubmitError('');
 
     try {
-      // Get the Supabase project URL from the client
-      const projectUrl = supabase.rest.url.replace('/rest/v1', '');
-      const anonKey = (window as any).__SUPABASE_ANON_KEY || 
-        document.querySelector('meta[name="supabase-anon-key"]')?.getAttribute('content');
+      if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error('Supabase is not configured. Please check environment variables.');
+      }
 
-      // Call the Edge Function
-      const response = await fetch(`${projectUrl}/functions/v1/send-contact`, {
+      // Construct the Edge Function URL
+      const functionUrl = `${supabaseUrl}/functions/v1/send-contact`;
+
+      console.log('Sending to:', functionUrl);
+
+      const response = await fetch(functionUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${anonKey}`,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
         },
         body: JSON.stringify({ name, email, message }),
       });
@@ -71,19 +74,21 @@ export default function Contact() {
       const result = await response.json();
 
       if (!response.ok) {
+        console.error('Error response:', result);
         setFormState('error');
         setSubmitError(result.error || 'Unable to send your inquiry right now. Please try again.');
         return;
       }
 
+      console.log('Success:', result);
       setNameVal('');
       setEmailVal('');
       setMessageVal('');
       setFormState('success');
     } catch (error) {
-      setFormState('error');
-      setSubmitError('Network error. Please check your connection and try again.');
       console.error('Submit error:', error);
+      setFormState('error');
+      setSubmitError(error instanceof Error ? error.message : 'Network error. Please check your connection and try again.');
     }
   };
 
