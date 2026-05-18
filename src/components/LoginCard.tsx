@@ -8,10 +8,9 @@ interface Props {
     onEmailChange: (v: string) => void;
     onPasswordChange: (v: string) => void;
     onLogin: (e: React.FormEvent) => void;
-    onRegister?: () => void;
 }
 
-export const LoginCard: React.FC<Props> = ({ email, password, onEmailChange, onPasswordChange, onLogin, onRegister }) => {
+export const LoginCard: React.FC<Props> = ({ email, password, onEmailChange, onPasswordChange, onLogin }) => {
     return (
         <Card className="relative w-[350px] overflow-hidden">
             <CardHeader>
@@ -33,8 +32,7 @@ export const LoginCard: React.FC<Props> = ({ email, password, onEmailChange, onP
                     </div>
                 </CardContent>
 
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline" type="button" onClick={onRegister}>Register</Button>
+                <CardFooter className="flex justify-end">
                     <Button type="submit">Login</Button>
                 </CardFooter>
             </form>

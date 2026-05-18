@@ -578,7 +578,6 @@ export default function AdminDashboard() {
                         onEmailChange={(v) => setEmail(v)}
                         onPasswordChange={(v) => setPassword(v)}
                         onLogin={handleLogin}
-                        onRegister={() => pushNotice('info', 'Registration disabled', 'Use an approved admin account to sign in.')} 
                     />
                 </div>
             </div>
